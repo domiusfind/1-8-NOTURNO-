@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Área do Aluno</title>
+  <link rel="stylesheet" href="styles/style.css" />
+</head>
+<body>
+  <h1>Bem-vindo, <span id="nomeUsuario"></span></h1>
+  <p>Cargo: <span id="cargoUsuario"></span></p>
+
+  <div id="areaDono" style="display:none;">
+    <h2>Gerar novo login</h2>
+    <input type="text" id="novoUsuario" placeholder="Novo usuário" />
+    <input type="password" id="novaSenha" placeholder="Nova senha" />
+    <button onclick="criarLogin()">Criar Login</button>
+  </div>
+
+  <hr />
+
+  <h2>Área de Estudos</h2>
+  <ul>
+    <li><strong>Aula 01:</strong> <a href="arquivos/aula01.pdf" target="_blank">Baixar PDF</a></li>
+  </ul>
+
+  <hr />
+
+  <h2>📢 Avisos</h2>
+  <div id="avisos"></div>
+
+  <script src="scripts/main.js"></script>
+</body>
+</html>
