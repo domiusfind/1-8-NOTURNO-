@@ -1,10 +1,51 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-  <meta charset="UTF-8" />
-  <title>Início</title>
-  <meta http-equiv="refresh" content="0; URL=login.html" />
-</head>
-<body>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 flex items-center justify-center h-screen">
+    <div class="bg-white p-8 rounded shadow-md w-96">
+      <h2 class="text-2xl font-bold mb-4 text-center">Login do Aluno</h2>
+      <input id="nome" class="border p-2 w-full mb-3" placeholder="Nome (Ex: EDUARDA)" />
+      <input id="senha" type="password" class="border p-2 w-full mb-4" placeholder="Senha" />
+      <button onclick="login()" class="bg-blue-600 text-white px-4 py-2 rounded w-full">Entrar</button>
+      <p id="erro" class="text-red-500 mt-3 text-center hidden">Nome ou senha incorretos</p>
+    </div>
+
+    <script>
+      const usuarios = {
+        "EMANUEL": "senha1",
+        "DANIEL": "senha2",
+        "EDUARDA": "senha3",
+        "KAIO": "senha4",
+        "RAQUEL": "senha5",
+        "CARLOS": "senha6",
+        "LEONARDO": "senha7",
+        "LEONARDO INÁCIO": "senha8",
+        "MIKAELLY": "senha9",
+        "ISABELE": "senha10",
+        "MARIA FERNANDA": "senha11",
+        "HELLEN VITÓRIA": "senha12",
+        "CAROL": "senha13",
+        "LUCAS": "senha14",
+        "DANIEL DOVEL": "senha15",
+        "ERICK": "senha16",
+        "LUIS": "senha17",
+        "DONO": "admin123"
+      };
+
+      function login() {
+        const nome = document.getElementById("nome").value.toUpperCase();
+        const senha = document.getElementById("senha").value;
+        if (usuarios[nome] && usuarios[nome] === senha) {
+          localStorage.setItem("usuario", nome);
+          window.location.href = nome === "DONO" ? "painel-dono.html" : "painel.html";
+        } else {
+          document.getElementById("erro").classList.remove("hidden");
+        }
+      }
+    </script>
+  </body>
 </html>

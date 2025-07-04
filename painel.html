@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Painel do Aluno</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 p-8">
+    <h1 class="text-2xl font-bold mb-4">Bem-vindo, <span id="nomeUsuario"></span></h1>
+
+    <h2 class="text-xl font-semibold mb-2">📚 Atividades</h2>
+    <ul class="list-disc ml-6 mb-6">
+      <li><a href="arquivos/aula01.pdf" class="text-blue-600 underline">Aula 01 - Baixar PDF</a></li>
+    </ul>
+
+    <h2 class="text-xl font-semibold mb-2">📢 Avisos</h2>
+    <div id="avisos" class="bg-white p-4 rounded shadow"></div>
+
+    <script>
+      const nome = localStorage.getItem("usuario");
+      document.getElementById("nomeUsuario").innerText = nome;
+
+      fetch("data/avisos.json")
+        .then(res => res.json())
+        .then(data => {
+          const div = document.getElementById("avisos");
+          div.innerHTML = "";
+          data.avisos.forEach(aviso => {
+            const p = document.createElement("p");
+            p.textContent = "• " + aviso;
+            div.appendChild(p);
+          });
+        });
+    </script>
+  </body>
+</html>
